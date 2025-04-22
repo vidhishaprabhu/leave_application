@@ -38,6 +38,10 @@ class AuthController extends Controller
         }
         $user=Auth::user();
         $token=User::createToken('auth_token')->plainTextToken;
-        return reponse()->json(['message'=>'Login is done successfully'],201);
+        return reponse()->json([
+            'access_token'=>$token,
+            'token_type'=>'Bearer',
+            'user'=>$user
+        ]);
     }
 }
